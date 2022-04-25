@@ -3,15 +3,27 @@ window.onload = function () {
     formBtn.onclick = main;
 };
 function main() {
-    resetErrorMessages();
     var msgHeading = document.createElement("h2");
     msgHeading.innerText = "Processing form";
     msgHeading.setAttribute("class", "message");
+    msgHeading.onclick = changeHeading;
     var h1 = document.querySelector("h1");
     h1.insertAdjacentElement("afterend", msgHeading);
+    setTimeout(function () {
+        msgHeading.remove();
+    }, 20000);
+    resetErrorMessages();
     validateTxtInput("first-name", "First name is required");
     validateTxtInput("last-name", "Last name is required");
     ValidateDobInput();
+}
+function changeHeading() {
+    var heading = this;
+    var red = Math.floor(Math.random() * 255 + 1);
+    var green = Math.floor(Math.random() * 255 + 1);
+    var blue = Math.floor(Math.random() * 255 + 1);
+    var color = "rgb(" + red + "," + green + "," + blue + ")";
+    heading.style.color = color;
 }
 function ValidateDobInput() {
     var dobBox = document.getElementById("dob");

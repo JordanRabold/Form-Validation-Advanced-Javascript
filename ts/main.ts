@@ -4,16 +4,22 @@ window.onload = function(){
 }
 
 function main():void{
-    resetErrorMessages();
-    
+
     // Create h2 and display message 
     let msgHeading = document.createElement("h2");
     msgHeading.innerText = "Processing form";
     msgHeading.setAttribute("class", "message");
+    msgHeading.onclick = changeHeading;
 
     let h1 = document.querySelector("h1");
     h1.insertAdjacentElement("afterend", msgHeading);
     
+    setTimeout(function(){
+        msgHeading.remove();
+    }, 20000)
+
+    resetErrorMessages();
+
     // Validate first name
     validateTxtInput("first-name", "First name is required");
 
@@ -23,7 +29,15 @@ function main():void{
     // Validate date of birth
     ValidateDobInput();
 
+}
 
+function changeHeading(){
+    let heading = <HTMLElement>this;
+    let red = Math.floor(Math.random() * 255 + 1);
+    let green = Math.floor(Math.random() * 255 + 1);
+    let blue = Math.floor(Math.random() * 255 + 1);
+    let color = "rgb(" + red + "," + green + "," + blue + ")";
+    heading.style.color = color;
 }
 
 function ValidateDobInput() {
