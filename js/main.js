@@ -3,13 +3,17 @@ window.onload = function () {
     formBtn.onclick = main;
 };
 function main() {
-    resetErrorMessages();
     validateTxtInput("first-name", "First name is required");
     validateTxtInput("last-name", "Last name is required");
+    ValidateDobInput();
+    resetErrorMessages();
+}
+function ValidateDobInput() {
     var dobBox = document.getElementById("dob");
     var dob = dobBox.value;
     if (!isDateValid(dob)) {
-        dobBox.nextElementSibling.innerHTML = "Format should be mm/dd/yyyy";
+        var errSpan = document.getElementById("dob-span");
+        errSpan.innerHTML = "Format should be mm/dd/yyyy";
     }
 }
 function isDateValid(input) {
