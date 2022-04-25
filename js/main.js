@@ -3,16 +3,21 @@ window.onload = function () {
     formBtn.onclick = main;
 };
 function main() {
+    resetErrorMessages();
+    var msgHeading = document.createElement("h2");
+    msgHeading.innerText = "Processing form";
+    msgHeading.setAttribute("class", "message");
+    var h1 = document.querySelector("h1");
+    h1.insertAdjacentElement("afterend", msgHeading);
     validateTxtInput("first-name", "First name is required");
     validateTxtInput("last-name", "Last name is required");
     ValidateDobInput();
-    resetErrorMessages();
 }
 function ValidateDobInput() {
     var dobBox = document.getElementById("dob");
     var dob = dobBox.value;
     if (!isDateValid(dob)) {
-        var errSpan = document.getElementById("dob-span");
+        var errSpan = dobBox.nextElementSibling;
         errSpan.innerHTML = "Format should be mm/dd/yyyy";
     }
 }

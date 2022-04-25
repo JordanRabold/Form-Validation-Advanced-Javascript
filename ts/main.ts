@@ -4,27 +4,33 @@ window.onload = function(){
 }
 
 function main():void{
+    resetErrorMessages();
+    
+    // Create h2 and display message 
+    let msgHeading = document.createElement("h2");
+    msgHeading.innerText = "Processing form";
+    msgHeading.setAttribute("class", "message");
+
+    let h1 = document.querySelector("h1");
+    h1.insertAdjacentElement("afterend", msgHeading);
     
     // Validate first name
     validateTxtInput("first-name", "First name is required");
-    
+
     // Validate last name
     validateTxtInput("last-name", "Last name is required");
 
     // Validate date of birth
     ValidateDobInput();
 
-    // reset error messages 
-    resetErrorMessages();
+
 }
 
 function ValidateDobInput() {
     let dobBox = <HTMLInputElement>document.getElementById("dob");
     let dob = dobBox.value;
     if (!isDateValid(dob)) {
-        //let errSpan = dobBox.nextElementSibling;
-        //dobBox.nextElementSibling.innerHTML = "Format should be mm/dd/yyyy";
-        let errSpan = document.getElementById("dob-span");
+        let errSpan = dobBox.nextElementSibling;
         errSpan.innerHTML = "Format should be mm/dd/yyyy";
     }
 }
