@@ -7,6 +7,19 @@ function main():void{
     resetErrorMessages();
     validateTxtInput("first-name", "First name is required");
     validateTxtInput("last-name", "Last name is required");
+    
+    // validate date
+    let dobBox = <HTMLInputElement>document.getElementById("dob");
+    let dob = dobBox.value;
+    if(!isDateValid(dob)){
+        dobBox.nextElementSibling.innerHTML = "Format should be mm/dd/yyyy";
+    }
+}
+
+function isDateValid(input:string):boolean{
+    // Validating mm/dd/yyyy and m/d/yyyy
+    let pattern = /^\d{1,2}\/\d{1,2}\/\d{1,4}$/g;
+    return pattern.test(input);
 }
 
 /**
