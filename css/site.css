@@ -2,6 +2,32 @@ form > span{
     color: red;
 }
 
+button{
+    padding: .75em;
+    border-radius: .2em;
+    background-color: rgb(162, 0, 162);
+    color: rgb(0, 147, 0);
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: rgb(1, 105, 1);
+}
+
+h1{
+    text-align: center;
+}
+
+h1, form label, form button, form input{
+    font-family: 'Ms Madi', cursive;
+}
+
+body{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 input[type=text]{
     margin: 1em;
 }
@@ -14,7 +40,7 @@ form > label{
 }
 
 form button{
-    margin-left: 45%;
+    margin-left: 50%;
 }
 
 @media only screen and (max-width: 475px){
